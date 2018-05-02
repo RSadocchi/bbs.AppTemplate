@@ -89,7 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DbContext_helper.cs" />
-    <Compile Include="Localize.cs" />
+    <Compile Include="Localize_helper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />

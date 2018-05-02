@@ -1,49 +1,37 @@
 ﻿using bbs.AppTemplate.Interfaces;
 using bbs.AppTemplate.Services;
-using Foundation;
-using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(bbs.AppTemplate.iOS.Localize))]
-namespace bbs.AppTemplate.iOS
+[assembly: Dependency(typeof(bbs.AppTemplate.Droid.Localize_helper))]
+namespace bbs.AppTemplate.Droid
 {
-    public class Localize : ILocalize_helper
+    public class Localize_helper : ILocalize_helper
     {
         public CultureInfo GetCurrentCulture()
         {
-            var netLanguage = "it";
-            if (NSLocale.PreferredLanguages.Length > 0)
-            {
-                var pref = NSLocale.PreferredLanguages[0];
-                netLanguage = iOSToDotNetLanguage(pref);
-            }
-
+            var netLanguage = "en";
+            var androidLocale = Java.Util.Locale.Default;
+            netLanguage = DroidToDotNetLanguage(androidLocale.ToString().Replace("_", "-"));
             CultureInfo ci = null;
             try
             {
                 ci = new CultureInfo(netLanguage);
             }
-            catch (CultureNotFoundException e1)
+            catch (CultureNotFoundException cex)
             {
                 try
                 {
                     var fallback = ToDotnetFallbackLanguage(new PlatformCulture_service(netLanguage));
-                    ci = new CultureInfo(fallback);
-                    Debug.Write(e1.Message);
+                    ci = new System.Globalization.CultureInfo(fallback);
+                    System.Diagnostics.Debug.Write(cex.Message);
                 }
-                catch (CultureNotFoundException e2)
+                catch (CultureNotFoundException cex2)
                 {
-                    ci = new CultureInfo("it");
-                    Debug.Write(e2.Message);
+                    ci = new System.Globalization.CultureInfo("it");
+                    System.Diagnostics.Debug.Write(cex2.Message);
                 }
-            }
-            catch (Exception ex)
-            {
-                ci = new CultureInfo("it");
-                Debug.Write(ex.Message);
             }
             return ci;
         }
@@ -54,11 +42,10 @@ namespace bbs.AppTemplate.iOS
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }
 
-        string iOSToDotNetLanguage(string iOSLang)
+        string DroidToDotNetLanguage(string droidLang)
         {
-            var netLanguage = iOSLang;
-
-            switch (iOSLang)
+            var netLanguage = droidLang;
+            switch (droidLang)
             {
                 case "ms-BN":   // "Malaysian (Brunei)" not supported .NET culture
                 case "ms-MY":   // "Malaysian (Malaysia)" not supported .NET culture
@@ -71,6 +58,8 @@ namespace bbs.AppTemplate.iOS
                 case "gsw-CH":  // "Schwiizertüütsch (Swiss German)" not supported .NET culture
                     netLanguage = "de-CH"; // closest supported
                     break;
+                    // add more application-specific cases here (if required)
+                    // ONLY use cultures that have been tested and known to work
             }
             return netLanguage;
         }

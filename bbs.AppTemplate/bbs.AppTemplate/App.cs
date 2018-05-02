@@ -1,6 +1,7 @@
 ﻿using bbs.AppTemplate.Interfaces;
 using bbs.AppTemplate.Models;
 using bbs.AppTemplate.Views;
+using bbs.AppTemplate.Resources.Langs;
 
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace bbs.AppTemplate
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
             {
                 var ci = DependencyService.Get<ILocalize_helper>().GetCurrentCulture();
-                // Langs.Lang.Culture = ci;
+                GlobalResx.Culture = ci; // repeat this for all main resource class
                 DependencyService.Get<ILocalize_helper>().SetLocaleCulture(ci);
             }
             #endregion
