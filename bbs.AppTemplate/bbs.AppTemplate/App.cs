@@ -1,4 +1,5 @@
 ﻿using bbs.AppTemplate.Globals;
+using bbs.AppTemplate.Globals.Settings;
 using bbs.AppTemplate.Interfaces;
 using bbs.AppTemplate.Models;
 using bbs.AppTemplate.Views;
@@ -16,6 +17,22 @@ namespace bbs.AppTemplate
 {
     public partial class App : Application
     {
+        #region SETTINGS
+        static AppSettings _settings = null;
+
+        public static AppSettings AppSettings
+        {
+            get
+            {
+                if (_settings == null)
+                    _settings = new AppSettings();
+                return _settings;
+            }
+        }
+
+        public static List<Property> Settings;
+        #endregion
+
         #region DATABASE
         static DbContext _ctx = null;
         /// <summary>
@@ -59,16 +76,19 @@ namespace bbs.AppTemplate
         protected override void OnStart()
         {
             // Handle when your app starts
+            Settings = AppSettings.GetSettings();
         }
 
         protected override void OnSleep()
         {
             // Handle when your app sleeps
+            AppSettings.SaveSettingsState();
         }
 
         protected override void OnResume()
         {
             // Handle when your app resumes
+            Settings = AppSettings.GetSettings();
         }
     }
 }
