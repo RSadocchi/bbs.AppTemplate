@@ -19,7 +19,7 @@ namespace bbs.AppTemplate
         #region DATABASE
         static DbContext _ctx = null;
         /// <summary>
-        /// For each operation into the db you just call this static field that is the db class instance
+        /// For each operation into the db you just call this static field (the db class instance)
         /// </summary>
         public static DbContext Context
         {
