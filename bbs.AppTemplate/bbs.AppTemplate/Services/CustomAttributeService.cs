@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace bbs.AppTemplate.Services
 {
-    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = true, Inherited = false)]
     public class FontSize : Attribute
     {
         public double ExtraSmall { get; private set; }
