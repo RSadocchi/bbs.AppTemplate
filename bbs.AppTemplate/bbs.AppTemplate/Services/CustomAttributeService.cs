@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace bbs.AppTemplate.Services
 {
@@ -11,13 +12,19 @@ namespace bbs.AppTemplate.Services
         public double Large { get; private set; }
         public double ExtraLarge { get; private set; }
 
-        public FontSize(double xsmall, double small, double normal, double large, double xlarge)
+        public Size? MinSize { get; private set; }
+        public Size? MaxSize { get; private set; }
+
+        public FontSize(double xsmall, double small, double normal, double large, double xlarge, 
+            Size? minSize = null, Size? maxSize = null)
         {
             ExtraSmall = xsmall;
             Small = small;
             Normal = normal;
             Large = large;
             ExtraLarge = large;
+            MinSize = minSize;
+            MaxSize = maxSize;
         }
     }
 
