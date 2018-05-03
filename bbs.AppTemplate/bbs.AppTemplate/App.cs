@@ -1,4 +1,5 @@
-﻿using bbs.AppTemplate.Interfaces;
+﻿using bbs.AppTemplate.Globals;
+using bbs.AppTemplate.Interfaces;
 using bbs.AppTemplate.Models;
 using bbs.AppTemplate.Views;
 using bbs.AppTemplate.Resources.Langs;
@@ -17,6 +18,9 @@ namespace bbs.AppTemplate
     {
         #region DATABASE
         static DbContext _ctx = null;
+        /// <summary>
+        /// For each operation into the db you just call this static field that is the db class instance
+        /// </summary>
         public static DbContext Context
         {
             get
@@ -27,6 +31,17 @@ namespace bbs.AppTemplate
             }
         }
         #endregion
+
+        #region ORIENTATION
+        /// <summary>
+        /// To change dynamically the UI relative to current orientetion, you must override on each page the OnSizeAllocated method (see sample in Home.xaml.cs code)
+        /// </summary>
+        public static Orientations CurrentOrientation
+        {
+            get { return DependencyService.Get<IOrientation_helper>().GetCurrentOrientation(); }
+        }
+        #endregion
+
         public App()
         {
             #region Local CultureInfo Identifier

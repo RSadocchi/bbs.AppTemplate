@@ -12,7 +12,7 @@ namespace bbs.AppTemplate.UWP
         {
             var folder = ApplicationData.Current.RoamingFolder.Path;
             var dbPath = Path.Combine(folder, "Databases", dbName); 
-            if (!File.Exists(dbPath)
+            if (!File.Exists(dbPath))
                 try
                 {
                     using (var stream = File.Create(dbPath))

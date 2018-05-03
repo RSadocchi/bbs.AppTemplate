@@ -1,4 +1,10 @@
-﻿using System;
+﻿using bbs.AppTemplate.Globals;
+using bbs.AppTemplate.Interfaces;
+using bbs.AppTemplate.Models;
+using bbs.AppTemplate.Views;
+using bbs.AppTemplate.Resources.Langs;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +22,29 @@ namespace bbs.AppTemplate.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            var orientation = App.CurrentOrientation;
+            switch (orientation)
+            {
+                case Orientations.Landscape:
+                    // TO DO: your UI action
+                    break;
+
+                case Orientations.Portrait:
+                    // TO DO: your UI action
+                    break;
+
+                case Orientations.Undefined:
+                    // TO DO: your UI action
+                    break;
+
+                default:
+                    // TO DO: your UI action
+                    break;
+            }
+        }
+    }
 }
