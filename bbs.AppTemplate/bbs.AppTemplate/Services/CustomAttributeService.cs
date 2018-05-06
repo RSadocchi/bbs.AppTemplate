@@ -3,29 +3,43 @@ using Xamarin.Forms;
 
 namespace bbs.AppTemplate.Services
 {
-    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = true, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
     public class FontSize : Attribute
     {
+        #region Font Sizes
         public double ExtraSmall { get; private set; }
         public double Small { get; private set; }
         public double Normal { get; private set; }
         public double Large { get; private set; }
         public double ExtraLarge { get; private set; }
+        #endregion
 
-        public Size? MinSize { get; private set; }
-        public Size? MaxSize { get; private set; }
+        #region Media Query
+        public TargetIdiom TargetIdiom { get; set; }
+        public string[] RuntimePlatforms { get; set; }
+        public double MinWidth { get; set; }
+        public double MaxWidth { get; set; }
+        public double MinHeight { get; set; }
+        public double MaxHeight { get; set; }
+        #endregion
 
-        public FontSize(double xsmall, double small, double normal, double large, double xlarge, 
-            Size? minSize = null, Size? maxSize = null)
+        #region Constructor
+        public FontSize(double xsmall, double small, double normal, double large, double xlarge,
+            TargetIdiom targetIdiom, string[] runtimePlatforms, double minWidth, double maxWidth, double minHeight, double maxHeight)
         {
             ExtraSmall = xsmall;
             Small = small;
             Normal = normal;
             Large = large;
             ExtraLarge = large;
-            MinSize = minSize;
-            MaxSize = maxSize;
+            TargetIdiom = targetIdiom;
+            RuntimePlatforms = runtimePlatforms;
+            MinWidth = minWidth;
+            MaxWidth = maxWidth;
+            MinHeight = minHeight;
+            MaxHeight = maxHeight;
         }
+        #endregion
     }
 
     [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
@@ -38,7 +52,7 @@ namespace bbs.AppTemplate.Services
         }
     }
 
-    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
     public class ComplexValue : Attribute
     {
         public object Value { get; private set; }

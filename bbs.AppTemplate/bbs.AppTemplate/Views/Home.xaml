@@ -4,7 +4,8 @@
              x:Class="bbs.AppTemplate.Views.Home">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label 
+                x:Name="UILabel"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

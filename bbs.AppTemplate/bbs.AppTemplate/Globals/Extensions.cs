@@ -10,7 +10,7 @@ namespace bbs.AppTemplate.Globals
         public static FontSize GetOrientationFontSize<Tsource>(this Tsource source) where Tsource : struct, IConvertible
         {
             if (!typeof(Tsource).IsEnum) return null;
-            Type attr = null;
+            Type attr = typeof(Tsource);
             var value = (FontSize)Attribute.GetCustomAttribute(attr, typeof(FontSize));
             if (value == null) return null;
             return value;
@@ -19,7 +19,7 @@ namespace bbs.AppTemplate.Globals
         public static string GetStringValue<T>(this T source) where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum) return null;
-            Type attr = null;
+            Type attr = typeof(T);
             StringValue value = (StringValue)Attribute.GetCustomAttribute(attr, typeof(StringValue));
             if (value == null) return null;
             return value.Value;
@@ -30,7 +30,7 @@ namespace bbs.AppTemplate.Globals
             where TValue : Type
         {
             if (!typeof(T).IsEnum) return null;
-            Type attr = null;
+            Type attr = typeof(TValue);
             ComplexValue value = (ComplexValue)Attribute.GetCustomAttribute(attr, typeof(ComplexValue));
             if (value == null) return null;
             if (value.ValueType != null && value.ValueType != typeof(TValue))

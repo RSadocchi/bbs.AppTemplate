@@ -7,15 +7,24 @@ namespace bbs.AppTemplate.Globals
     public enum Orientations
     {
         Undefined = 0,
+
+        // sample:
+        // [FontSize(8.5, 10, 12, 14, 16, X.TargetIdiom.Desktop | X.TargetIdiom.Tablet, new string[] { "iOS" , "Android", "UWP" }, 1000, 10000, 1000, 10000)]
         Landscape,
+
         Portrait
     }
 
     public enum DbResults
     {
         Undefined = 0,
+
+        // samples:
+        // [StringValue("OMG!!! An error was occurred!!!")]
         Error,
+
         Fail,
+
         Success,
     }
 

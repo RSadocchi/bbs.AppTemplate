@@ -21,6 +21,7 @@ namespace bbs.AppTemplate.Views
 		public Home ()
 		{
 			InitializeComponent ();
+            UILabel.Text = GlobalResx.Hello;
 		}
 
         protected override void OnSizeAllocated(double width, double height)
@@ -31,6 +32,8 @@ namespace bbs.AppTemplate.Views
             {
                 case Orientations.Landscape:
                     // TO DO: your UI action
+                    // for example:
+                    // UILabel.FontSize = App.CurrentOrientation.GetOrientationFontSize().Large;
                     break;
 
                 case Orientations.Portrait:
