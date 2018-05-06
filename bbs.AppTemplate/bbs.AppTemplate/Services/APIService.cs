@@ -16,6 +16,7 @@ using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace bbs.AppTemplate.Services
 {
@@ -27,16 +28,42 @@ namespace bbs.AppTemplate.Services
         APIException _exception;
         #endregion
 
+
+
         #region PUBLIC FIELDS
         public string BaseUrl { get { return _baseUrl; } set { _baseUrl = value; } }
         public APIException GetException { get { return _exception; } }
         #endregion
+
+
 
         #region CONSTRUCTORS
         public APIService() { _client = new WebClient(); }
 
         public APIService(string baseUrl) : this() { _baseUrl = baseUrl; }
         #endregion
+
+
+
+        #region PRIVATE METHODS
+
+        #endregion
+
+
+
+        #region PUBLIC METHODS
+        
+        #endregion
+
+
+
+        #region EVENT HANDLER
+        public delegate void RequestCompleteHandler(object sender, EventArgs args);
+        public event RequestCompleteHandler RequestComplete;
+        protected virtual void OnRequestComplete(EventArgs args) { RequestComplete?.Invoke(this, args); }
+        #endregion
+
+
 
         #region Disposable
         bool _disposed;
