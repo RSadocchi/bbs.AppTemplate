@@ -38,15 +38,17 @@ namespace bbs.AppTemplate.Services
 
 
         #region CONSTRUCTORS
-        public APIService() { _client = new WebClient(); }
-
-        public APIService(string baseUrl) : this() { _baseUrl = baseUrl; }
+        public APIService(string baseUrl)
+        {
+            _client = new WebClient();
+            _baseUrl = baseUrl;
+        }
         #endregion
 
 
 
         #region PRIVATE METHODS
-
+        bool _checkBaseUrl() { return (!string.IsNullOrEmpty(_baseUrl) || !string.IsNullOrWhiteSpace(_baseUrl)); }
         #endregion
 
 
