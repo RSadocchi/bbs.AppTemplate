@@ -9,7 +9,7 @@ namespace bbs.AppTemplate.Globals
         Undefined = 0,
 
         // sample:
-        // [FontSize(8.5, 10, 12, 14, 16, X.TargetIdiom.Desktop | X.TargetIdiom.Tablet, new string[] { "iOS" , "Android", "UWP" }, 1000, 10000, 1000, 10000)]
+        //[FontSize(8.5, 10, 12, 14, 16, X.TargetIdiom.Desktop | X.TargetIdiom.Tablet, new string[] { "iOS" , "Android", "UWP" }, 1000, 10000, 1000, 10000)]
         Landscape,
 
         Portrait
@@ -20,7 +20,7 @@ namespace bbs.AppTemplate.Globals
         Undefined = 0,
 
         // samples:
-        // [StringValue("OMG!!! An error was occurred!!!")]
+        //[StringValue("OMG!!! An error was occurred!!!")]
         Error,
 
         Fail,

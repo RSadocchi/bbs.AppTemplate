@@ -8,7 +8,7 @@ namespace bbs.AppTemplate.Globals.Settings
     public enum PropertyKeys
     {
         DefaultLang,
-        DbSqliteName,
+        DbSqLiteName,
 
         Auth_IsConfigured,
         Auth_IsRequired,
@@ -20,7 +20,7 @@ namespace bbs.AppTemplate.Globals.Settings
     public struct Property
     {
         public PropertyKeys Key { get; private set; }
-
+        
         object _value;
         public object Value
         {
