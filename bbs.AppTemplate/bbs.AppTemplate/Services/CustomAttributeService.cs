@@ -42,20 +42,6 @@ namespace bbs.AppTemplate.Services
         #endregion
     }
 
-    //[AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
-    //public class UIStyle : Attribute
-    //{
-    //    public string UniqueName { get; private set; }
-
-    //    public Color Background { get; private set; }
-
-    //    public Color TextPrimary { get; private set; }
-    //    public Color TextSecondary { get; private set; }
-    //    public Color TextComment { get; private set; }
-    //    public Color TextOther { get; private set; }
-
-    //}
-
     [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public class StringValue : Attribute
     {
